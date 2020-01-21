@@ -1,0 +1,57 @@
+﻿@model IEnumerable<object>
+
+
+@{
+
+    List<paSystem.Models.pa> lspa = Model.ToList()[0] as List<paSystem.Models.pa>;
+    List<paSystem.Models.Student> lsStudent = Model.ToList()[1] as List<paSystem.Models.Student>;
+}
+
+<h2>Index</h2>
+
+<p>
+    List
+</p>
+
+
+@foreach (var item2 in lspa)
+{
+
+    <table class="table">
+
+
+        @foreach (var item in lsStudent)
+        {
+            if (item.Id == item2.studentID)
+            {
+                <tr>
+                    <td>
+                        @item.Matrix
+                    </td>
+
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Year
+                    </td>
+
+                    <td>
+                        @item.Gender
+                    </td>
+
+
+                    <td>
+                        @item.Id
+                    </td>
+
+                </tr>
+
+            }
+
+        }
+
+    </table>
+
+}
+

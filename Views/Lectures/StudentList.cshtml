@@ -1,0 +1,76 @@
+﻿@model IEnumerable<object>
+
+
+@{
+
+    List<paSystem.Models.pa> lspas = Model.ToList()[0] as List<paSystem.Models.pa>;
+    List<paSystem.Models.Student> lsStudent = Model.ToList()[1] as List<paSystem.Models.Student>;
+  
+    ViewBag.Title = "List All Student";
+
+
+
+}
+
+<h2>Index</h2>
+
+<p>
+
+</p>
+
+
+
+@foreach (var item2 in lspas)
+{
+
+<table class="table">
+
+
+    @foreach (var item in lsStudent)
+    {
+        if (item2.studentID != item.Id)
+        {
+    <tr>
+        <td>
+            @item.Matrix
+        </td>
+
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Year
+        </td>
+
+        <td>
+            @item.Gender
+        </td>
+
+
+        <td>
+            @item.Id
+        </td>
+
+
+
+        <td>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" name="lectureID" value="@item2.Id" />
+                <input type="hidden" name="studentID" value="@item.Id" />
+                <input type="submit" value="ADD" />
+            }
+        </td>
+    </tr>
+
+
+        }
+
+    }
+
+</table>
+
+}
+
